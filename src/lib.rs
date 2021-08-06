@@ -12,21 +12,14 @@ use vulnerabilities::merge_vulnerabilities_with_footprint;
 use vulnerabilities::structs::VulnerabilityFootPrint;
 
 
-#[derive(Debug)]
-enum Value {
-    Float(f32),
-    Int(i32),
-}
-
-// fn main() {
-//     let mut map = HashMap::new();
-
-//     map.insert("a", Value::Str("1"));
-//     map.insert("b", Value::Int(2));
-
-//     for (key, value) in &map {
-//         println!("{}: {:?}", key, value);
-//     }
+// pub struct VulnerabilityFootPrint {
+//     pub vulnerability_id: i32,
+//     pub intensity_bin_id: i32,
+//     pub damage_bin_id: i32,
+//     pub damage_probability: f32,
+//     pub event_id: i32,
+//     pub areaperil_id: i32,
+//     pub footprint_probability: f32
 // }
 
 
@@ -38,8 +31,14 @@ fn get_model<'a>(event_ids: Vec<i32>, mut base_path: String, py: Python) -> Vec<
    let mut buffer = Vec::new();
    
    for i in model {
-       let mut placeholder = PyDict::new(py);
+       let placeholder = PyDict::new(py);
+       placeholder.set_item("vulnerability_id", i.vulnerability_id);
+       placeholder.set_item("intensity_bin_id", i.intensity_bin_id);
+       placeholder.set_item("damage_bin_id", i.damage_bin_id);
+       placeholder.set_item("damage_probability", i.damage_probability);
+       placeholder.set_item("event_id", i.event_id);
        placeholder.set_item("areaperil_id", i.areaperil_id);
+       placeholder.set_item("footprint_probability", i.footprint_probability);
        buffer.push(placeholder);
    }
    return buffer
