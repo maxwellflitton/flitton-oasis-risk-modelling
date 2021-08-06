@@ -1,15 +1,13 @@
 use std::error::Error;
 use std::fs::File;
 use csv;
-use std::env;
 
 use super::structs::FootPrint;
 
 
-pub fn read_footprint() -> Result<Vec<FootPrint>, Box<dyn Error>> {
-    let mut dir = env::current_dir().unwrap();
-    dir.push("/footprint.csv");
-    let file = File::open(dir)?;
+pub fn read_footprint(mut base_path: String) -> Result<Vec<FootPrint>, Box<dyn Error>> {
+    base_path.push_str("/footprint.csv");
+    let file = File::open(base_path.as_str())?;
     let mut rdr = csv::Reader::from_reader(file);
 
     let mut buffer = Vec::new();

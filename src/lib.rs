@@ -13,9 +13,9 @@ use vulnerabilities::structs::VulnerabilityFootPrint;
 
 
 #[pyfunction]
-fn get_model<'a>(event_ids: Vec<i32>) -> Vec<HashMap<String, i32>> {
-   let footprints = merge_event_ids_with_footprint(event_ids);
-   let model = merge_vulnerabilities_with_footprint(footprints);
+fn get_model<'a>(event_ids: Vec<i32>, mut base_path: String) -> Vec<HashMap<String, i32>> {
+    let footprints = merge_event_ids_with_footprint(event_ids, base_path.clone());
+    let model = merge_vulnerabilities_with_footprint(footprints, base_path);
 
    let mut buffer = Vec::new();
    

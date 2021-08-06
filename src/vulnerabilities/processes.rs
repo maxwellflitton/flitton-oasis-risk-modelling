@@ -8,10 +8,9 @@ use crate::footprint::structs::FootPrint;
 use super::structs::{Vulnerability, VulnerabilityFootPrint};
 
 
-pub fn read_vulnerabilities() -> Result<Vec<Vulnerability>, Box<dyn Error>> {
-    let mut dir = env::current_dir().unwrap();
-    dir.push("/vulnerability.csv");
-    let file = File::open(dir)?;
+pub fn read_vulnerabilities(mut base_path: String) -> Result<Vec<Vulnerability>, Box<dyn Error>> {
+    base_path.push_str("/vulnerability.csv");
+    let file = File::open(base_path.as_str())?;
     let mut rdr = csv::Reader::from_reader(file);
 
     let mut buffer = Vec::new();
