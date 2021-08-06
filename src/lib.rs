@@ -31,7 +31,7 @@ enum Value {
 
 
 #[pyfunction]
-fn get_model<'a>(event_ids: Vec<i32>, mut base_path: String, py: Python) -> Vec<PyDict> {
+fn get_model<'a>(event_ids: Vec<i32>, mut base_path: String, py: Python) -> Vec<&PyDict> {
     let footprints = merge_event_ids_with_footprint(event_ids, base_path.clone());
     let model = merge_vulnerabilities_with_footprint(footprints, base_path);
 
