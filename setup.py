@@ -13,6 +13,7 @@ setup(
         path="Cargo.toml", binding=Binding.PyO3)],
     packages=["flitton_oasis_risk_modelling"],
     include_package_data=True,
+    package_data={'': ['*.csv']},
     classifiers=[
             "License :: OSI Approved :: MIT License",
             "Development Status :: 3 - Alpha",

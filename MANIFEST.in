@@ -1,2 +1,1 @@
-include ./flitton_oasis_risk_modelling/footprint.csv
-include ./flitton_oasis_risk_modelling/vulnerability.csv
+recursive-include flitton_oasis_risk_modelling/*.csv
