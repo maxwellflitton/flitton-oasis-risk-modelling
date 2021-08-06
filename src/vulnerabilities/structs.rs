@@ -9,8 +9,7 @@ pub struct Vulnerability {
     pub probability: f32
 }
 
-
-#[derive(Debug, Deserialize, Clone)]
+#[pyclass]
 pub struct VulnerabilityFootPrint {
     pub vulnerability_id: i32,
     pub intensity_bin_id: i32,
