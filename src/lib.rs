@@ -18,16 +18,16 @@ enum Value {
     Int(i32),
 }
 
-fn main() {
-    let mut map = HashMap::new();
+// fn main() {
+//     let mut map = HashMap::new();
 
-    map.insert("a", Value::Str("1"));
-    map.insert("b", Value::Int(2));
+//     map.insert("a", Value::Str("1"));
+//     map.insert("b", Value::Int(2));
 
-    for (key, value) in &map {
-        println!("{}: {:?}", key, value);
-    }
-}
+//     for (key, value) in &map {
+//         println!("{}: {:?}", key, value);
+//     }
+// }
 
 
 #[pyfunction]
