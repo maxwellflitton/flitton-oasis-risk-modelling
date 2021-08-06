@@ -12,6 +12,7 @@ setup(
         ".flitton_oasis_risk_modelling.flitton_oasis_risk_modelling",
         path="Cargo.toml", binding=Binding.PyO3)],
     packages=["flitton_oasis_risk_modelling"],
+    include_package_data=True,
     classifiers=[
             "License :: OSI Approved :: MIT License",
             "Development Status :: 3 - Alpha",
