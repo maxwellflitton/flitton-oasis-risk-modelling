@@ -7,7 +7,7 @@ mod vulnerabilities;
 
 use footprint::merge_event_ids_with_footprint;
 use vulnerabilities::merge_vulnerabilities_with_footprint;
-use vulnerabilities::structs::VulnerabilityFootPrint
+use vulnerabilities::structs::VulnerabilityFootPrint;
 
 
 #[pyfunction]
