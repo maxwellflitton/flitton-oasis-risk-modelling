@@ -39,6 +39,7 @@ fn get_model<'a>(event_ids: Vec<i32>, mut base_path: String, py: Python) -> Vec<
        placeholder.set_item("event_id", i.event_id);
        placeholder.set_item("areaperil_id", i.areaperil_id);
        placeholder.set_item("footprint_probability", i.footprint_probability);
+       placeholder.set_item("total_probability", i.total_probability);
        buffer.push(placeholder);
    }
    return buffer

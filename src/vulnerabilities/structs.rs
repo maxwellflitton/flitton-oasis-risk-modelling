@@ -18,5 +18,6 @@ pub struct VulnerabilityFootPrint {
     pub damage_probability: f32,
     pub event_id: i32,
     pub areaperil_id: i32,
-    pub footprint_probability: f32
+    pub footprint_probability: f32,
+    pub total_probability: f32
 }

@@ -37,7 +37,8 @@ pub fn merge_footprint_with_vulnerabilities(vulnerabilities: Vec<Vulnerability>,
                     damage_probability: vulnerability.probability,
                     event_id: footprint.event_id,
                     areaperil_id: footprint.areaperil_id,
-                    footprint_probability: footprint.probability
+                    footprint_probability: footprint.probability,
+                    total_probability: footprint.probability * vulnerability.probability
                 });
             }
         }
