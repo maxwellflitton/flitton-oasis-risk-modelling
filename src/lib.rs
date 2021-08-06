@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 use pyo3::prelude::*;
 use pyo3::wrap_pyfunction;
 use pyo3::types::{PyDict, PyAny};
@@ -11,20 +13,18 @@ use vulnerabilities::structs::VulnerabilityFootPrint;
 
 
 #[pyfunction]
-fn get_model<'a>(event_ids: Vec<i32>) -> Vec<VulnerabilityFootPrint> {
+fn get_model<'a>(event_ids: Vec<i32>) -> Vec<HashMap<String, i32>> {
    let footprints = merge_event_ids_with_footprint(event_ids);
    let model = merge_vulnerabilities_with_footprint(footprints);
 
-//    let gil = Python::acquire_gil();
-//    let py = gil.python();
-//    let mut buffer = Vec::new();
+   let mut buffer = Vec::new();
    
-//    for i in model {
-//        let placeholder = PyDict::new(py);
-//        placeholder.set_item("areaperil_id", i.areaperil_id);
-//        buffer.push(placeholder);
-//    }
-   return model
+   for i in model {
+       let mut placeholder = HashMap::new();
+       placeholder.insert(String::from("areaperil_id"), i.areaperil_id);
+       buffer.push(placeholder);
+   }
+   return buffer
 }
 
 #[pymodule]
