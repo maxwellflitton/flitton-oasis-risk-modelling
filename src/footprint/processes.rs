@@ -30,7 +30,6 @@ pub fn merge_footprint_with_events(event_ids: Vec<i32>,
         for footprint in &footprints {
             if footprint.event_id == event_id {
                 buffer.push(footprint.clone());
-                break
             }
         }
     }
