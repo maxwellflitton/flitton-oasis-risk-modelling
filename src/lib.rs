@@ -12,17 +12,6 @@ use vulnerabilities::merge_vulnerabilities_with_footprint;
 use vulnerabilities::structs::VulnerabilityFootPrint;
 
 
-// pub struct VulnerabilityFootPrint {
-//     pub vulnerability_id: i32,
-//     pub intensity_bin_id: i32,
-//     pub damage_bin_id: i32,
-//     pub damage_probability: f32,
-//     pub event_id: i32,
-//     pub areaperil_id: i32,
-//     pub footprint_probability: f32
-// }
-
-
 #[pyfunction]
 fn get_model<'a>(event_ids: Vec<i32>, mut base_path: String, py: Python) -> Vec<&PyDict> {
     let footprints = merge_event_ids_with_footprint(event_ids, base_path.clone());
