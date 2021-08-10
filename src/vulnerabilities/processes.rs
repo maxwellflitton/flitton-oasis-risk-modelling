@@ -1,7 +1,6 @@
 use std::error::Error;
 use std::fs::File;
 use csv;
-use std::env;
 
 use crate::footprint::structs::FootPrint;
 
