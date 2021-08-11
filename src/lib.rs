@@ -1,7 +1,6 @@
 use pyo3::prelude::*;
 use pyo3::wrap_pyfunction;
 use pyo3::types::PyDict;
-// use polars_core::prelude::*;
 
 mod footprint;
 mod vulnerabilities;
@@ -9,15 +8,6 @@ mod vulnerabilities;
 use footprint::merge_event_ids_with_footprint;
 use vulnerabilities::merge_vulnerabilities_with_footprint;
 use vulnerabilities::structs::VulnerabilityFootPrint;
-
-
-// #[pyfunction]
-// fn get_dataframe() -> DataFrame {
-//     let a = UInt32Chunked::new_from_slice("a", &[1, 2, 3]).into_series();
-//     let b = Float64Chunked::new_from_slice("b", &[10., 8., 6.]).into_series();
-//     let df = DataFrame::new(vec![a, b]).unwrap();
-//     return df
-// }
 
 
 #[pyfunction]
