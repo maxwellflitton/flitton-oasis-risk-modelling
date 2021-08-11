@@ -1,6 +1,7 @@
 use pyo3::prelude::*;
 use pyo3::wrap_pyfunction;
 use pyo3::types::PyDict;
+use polars_core::prelude::*;
 
 mod footprint;
 mod vulnerabilities;
@@ -11,7 +12,16 @@ use vulnerabilities::structs::VulnerabilityFootPrint;
 
 
 #[pyfunction]
-fn get_model<'a>(event_ids: Vec<i32>, mut base_path: String, py: Python) -> Vec<&PyDict> {
+fn get_dataframe() -> DataFrame {
+    let a = UInt32Chunked::new_from_slice("a", &[1, 2, 3]).into_series();
+    let b = Float64Chunked::new_from_slice("b", &[10., 8., 6.]).into_series();
+    let df = DataFrame::new(vec![a, b]).unwrap();
+    return df
+}
+
+
+#[pyfunction]
+fn get_model(event_ids: Vec<i32>, mut base_path: String, py: Python) -> Vec<&PyDict> {
     let footprints = merge_event_ids_with_footprint(event_ids, base_path.clone());
     let model = merge_vulnerabilities_with_footprint(footprints, base_path);
 
@@ -35,5 +45,6 @@ fn get_model<'a>(event_ids: Vec<i32>, mut base_path: String, py: Python) -> Vec<
 #[pymodule]
 fn flitton_oasis_risk_modelling(_py: Python, m: &PyModule) -> PyResult<()> {
     m.add_wrapped(wrap_pyfunction!(get_model));
+    m.add_wrapped(wrap_pyfunction!(get_dataframe));
     Ok(())
 }
